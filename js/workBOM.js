@@ -16,42 +16,52 @@ $.fn.yellow = function() {
 };
 
 
+
+function cleanInput(lines){
+
+    return lines.replace(/\r\n|\r|\n/g, '~~').split('~~');
+
+}
+
+/* Work on a plugin to reduce repeated code*/
+function articlesEmail(userInput) {
+
+            var articlesHTML = "";
+
+            for(var i = 0; i < userInput.length; i+=3){
+                articlesHTML += "\<table align=\"left\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"\>\<tr\>\<td style=\"font-size:14px; font-family:Arial, Helvetica, sans-serif; color: #000000;\"\>\<a style=\"color:#0b486c; text-decoration:none; font-weight:bold;\" href=\"" + userInput[i+1] + "\?src=wnl_edit_bom_weekly&uac=%%uac%%&impID=%%JOBID%%&faf=1\"\>" + userInput[i] + "\<\/a\>\<\/td\>\<\/tr\>\<tr\>\<td height=\"15\" valign=\"top\" style=\"font-size:1px; line-height:15px;\"\>\<img style=\"display:block;\" height=\"1\" src=\"http:\/\/img.medscapestatic.com\/pi\/global\/ornaments\/spacer.gif\" width=\"1\" border=\"0\" alt=\"\"\>\<\/td\> \<\/tr\>\<\/table\>";
+            }
+
+            return articlesHTML;
+
+}
+
+
+
+
+
 $(function(){
 
 
 
     $("#generate").on("click", function(){
 
-        var storiesInput = $("#topStories").val().replace(/\r\n|\r|\n/g, '~~').split('~~');
-        var newsInput = $("#topNews").val().replace(/\r\n|\r|\n/g, '~~').split('~~');
-        var blogsInput =  $("#blogs").val().replace(/\r\n|\r|\n/g, '~~').split('~~');
+        var storiesInput = cleanInput($("#topStories").val());
+        var newsInput = cleanInput($("#topNews").val());
+        var blogsInput =  cleanInput($("#blogs").val());
         var editorsNote = $("#editorsNote").val();
 
         alert(storiesInput);
-        //alert(newsInput)
+        alert(newsInput);
+        alert(blogsInput);
 
 
-        /*messing around with for each.
-        var arrayStories = [];
-        var arrStrCount = 0;
-         */
-
-        var storiesHTML = "";
-
-     var storiesLoop =  $.each(storiesInput, function(index, value) {
+        var storiesHTML = articlesEmail(storiesInput);
+        var newsHTML = articlesEmail(newsInput);
+        var blogsHTML = blogsInput;
 
 
 
-        storiesHTML += "\<table align=\"left\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"\>\<tr\>\<td style=\"font-size:14px; font-family:Arial, Helvetica, sans-serif; color: #000000;\"\>\<a style=\"color:#0b486c; text-decoration:none; font-weight:bold;\" href=\""+ value +"\?src=wnl_edit_bom_weekly&uac=%%uac%%&impID=%%JOBID%%&faf=1\"\>"+ value +"\<\/a\>\<\/td\>\<\/tr\>\<tr\>\<td height=\"15\" valign=\"top\" style=\"font-size:1px; line-height:15px;\"\>\<img style=\"display:block;\" height=\"1\" src=\"http:\/\/img.medscapestatic.com\/pi\/global\/ornaments\/spacer.gif\" width=\"1\" border=\"0\" alt=\"\"\>\<\/td\> \<\/tr\>\<\/table\>";
-
-           /*return "\<table align=\"left\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"\>\<tr\>\<td style=\"font-size:14px; font-family:Arial, Helvetica, sans-serif; color: #000000;\"\>\<a style=\"color:#0b486c; text-decoration:none; font-weight:bold;\" href=\""+ index +"\?src=wnl_edit_bom_weekly&uac=%%uac%%&impID=%%JOBID%%&faf=1\"\>"+ value +"\<\/a\>\<\/td\>\<\/tr\>\<tr\>\<td height=\"15\" valign=\"top\" style=\"font-size:1px; line-height:15px;\"\>\<img style=\"display:block;\" height=\"1\" src=\"http:\/\/img.medscapestatic.com\/pi\/global\/ornaments\/spacer.gif\" width=\"1\" border=\"0\" alt=\"\"\>\<\/td\> \<\/tr\>\<\/table\>";*/
-
-index+3;
-
-        });
-
-
-alert(storiesHTML);
         /*This showed the html code is being stored in storiesHTML. Next test to see if it can be concatenated. */
 
 /* All of this below works
@@ -72,10 +82,60 @@ var displayEditorsNote = editorsNote;
         $("#displayContent").css("width", "auto");
         $("#displayContent").css("height", "auto");
 
-    $("#displayContent").html(storiesHTML);
+    $("#displayContent").html(storiesHTML + "<br><br>" + newsHTML + "<br><br>" + blogsHTML);
 
 
     });
+
+
+
+
+
+
+
+    $("#resetButton").on("click", function(){
+
+        $("#displayContent").html(" ");
+        $("#bomFrom").reset();
+
+    });
+
+
+
+
+   /*
+
+Tweak javascript to jquery
+
+        function eraseDiv() {
+
+
+            var displayField = document.getElementById('newSplit');
+
+            //Reset the display area to an empty square.
+            displayField.innerText = " ";
+
+            var form = document.getElementById('generateForm');
+
+            //Reset form values.
+            form.reset();
+
+            //Reset the display area size to the original values.
+            displayField.style.width = "600px";
+            displayField.style.height = "400px";
+
+        }
+
+        var resetButton = document.getElementById('resetButton');
+        resetButton.onclick = eraseDiv;
+
+
+    }
+
+     */
+
+
+
 
 
 });
