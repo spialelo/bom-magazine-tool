@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="css/reset.css" type="text/css" rel="stylesheet"/>
+    <link href="css/bom.css" type="text/css" rel="stylesheet"/>
+    <title>BOM Tool v1.0</title>
+</head>
+<body style="margin: 0 auto; font-family: Arial, Helvetica, sans-serif;">
+
+
+<!--
+Top stories, top news, blogs, eidtor's note.
+
+-->
+
+<main style="width:960px; margin:0 auto; clear: both;">
+    <header style="text-align: center; clear: both; margin: 25px 0; border: 1px solid #000000; padding: 25px; font-weight: bold;">
+        Business of Medicine Magazine Tool v1.0
+    </header>
+
+<section style="float: left; clear: both;">
+
+    <form id="bomForm">
+
+    <h4 style="margin-bottom: 10px;">Top Stories</h4>
+    <textarea id="topStories" cols="80" rows="20" style="margin-bottom: 25px; float: left; clear: both;" placeholder="Paste Top Stories content here."></textarea>
+
+
+    <h4 style="margin-bottom: 10px;">Top News</h4>
+    <textarea id="topNews" cols="80" rows="20" style="margin-bottom: 25px; float: left; clear: both;" placeholder="Paste Top News content here."></textarea>
+
+
+    <h4 style="margin-bottom: 10px;">Blogs</h4>
+    <textarea id="blogs" cols="80" rows="20" style="margin-bottom: 25px; float: left; clear: both;" placeholder="Paste Blog content here."></textarea>
+<!-- Use regex to pull what i need out of the blog url ? ? ? an idea -->
+
+        <h4 style="margin-bottom: 10px;">Editor's Note</h4>
+        <textarea id="editorsNote" cols="80" rows="20" style="margin-bottom: 25px; float: left; clear: both;" placeholder="Paste Editor's Content content here."></textarea>
+        <!-- Use regex to pull in the paragraph and then pull the article title ? ? ? an idea -->
+
+        <button id="generate" value="Split!" type="button" style="float: left; clear:both; margin-left:25px;">Split!</button>
+
+        <div id="displayContent" style="float: left; clear: both; width: 560px; height: 400px; background-color:#333; color:#fff; margin:25px 0; padding:20px;"></div>
+
+        <button type="reset" id="resetButton" placeholder="Reset" style="float:left; clear: both;">Reset/Clear</button>
+
+    </form>
+
+
+</section>
+
+
+    <footer style="float: left; clear: both; margin: 25px 0;">
+        Developed by Nicole Phillips.
+    </footer>
+
+
+</main>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/workBOM.js" type="text/javascript"></script>
+</body>
+</html>
