@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <link href="css/reset.css" type="text/css" rel="stylesheet"/>
     <link href="css/bom.css" type="text/css" rel="stylesheet"/>
@@ -35,13 +35,19 @@ Top stories, top news, blogs, eidtor's note.
     <textarea id="blogs" cols="80" rows="20" style="margin-bottom: 25px; float: left; clear: both;" placeholder="Paste Blog content here."></textarea>
 <!-- Use regex to pull what i need out of the blog url ? ? ? an idea -->
 
-        <h4 style="float: left; clear: both; margin-bottom: 10px;">Editor's Note</h4>
+        <h4 style="float: left; clear: both; margin-bottom: 10px;">Editor's Note Paragraph</h4>
         <textarea id="editorsNote" cols="80" rows="20" style="margin-bottom: 25px; float: left; clear: both;" placeholder="Paste Editor's Content content here."></textarea>
+
+        <h4 style="float: left; clear: both; margin-bottom: 10px;">Editor's Note Article</h4>  <input type="text" id="editNoteArticle" style="float:left;" placeholder="Editor's Note Article" autocomplete="off" />
+        <h4 style="float: left; clear: both; margin-bottom: 10px;">Editor's Note Link</h4> <input type="text" id="editNoteLink" style="float:left;" placeholder="Editor's Note Link" autocomplete="off" />
         <!-- Use regex to pull in the paragraph and then pull the article title ? ? ? an idea -->
 
         <button id="generate" value="Split!" type="button" style="float: left; clear:both; margin-left:25px;">Split!</button>
 
-        <div id="displayContent" style="float: left; clear: both; width: 560px; height: 400px; background-color:#333; color:#fff; margin:25px 0; padding:20px;"></div>
+
+        <div id="displayTextContent" style="float: left; clear: both; width: 700px; height: 400px; overflow: hidden; background-color:#fff; color:#333; margin:25px 0; padding:20px; border: 1px dashed #333;"></div>
+
+        <div id="displayContent" style="float: left; clear: both; width: 700px; height: 400px; background-color:#fff; color:#333; margin:25px 0; padding:20px; border: 1px dashed #333;"></div>
 
         <button type="reset" id="resetButton" placeholder="Reset" style="float:left; clear: both;">Reset/Clear</button>
 
